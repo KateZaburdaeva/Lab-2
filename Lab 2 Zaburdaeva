@@ -1,0 +1,92 @@
+# # Задание 1
+# from csv import reader
+
+# with open('books-en.csv', 'r', encoding='windows-1251') as long:
+#     long = reader(long, delimiter = ';')
+#     count = 0
+#     for row in long:
+#         if len(row[1]) > 30:
+#             count += 1
+
+# print(f'Количество записей, длина которых больше 30 символов: {count}')
+
+
+
+
+
+# # Задание 2
+
+import csv
+
+def open_books():
+    with open('books.csv', newline='', encoding='UTF 8') as fh: 
+        reader = csv.reader(fh, delimiter=';', quotechar='"')
+        books = [row for row in reader]
+    return books[1:]
+
+
+
+def search_author():
+    filter = []
+    author = input("Введите автора:")
+    for book in books:
+        if (book[4]==author or book[3]==author) and float(book[7]) < 150:
+            print (book[3], book[1], f'цена: {book[7]}')
+
+    return filter
+
+
+books = open_books()
+search_author()
+
+
+
+
+
+
+
+# # Задание 3
+
+# import random
+# from csv import reader
+
+# def load_books(file1):
+#     with open(file1, 'r', encoding='windows-1251') as file:
+#         csv_reader = reader(file)
+#         head = next(csv_reader)
+#         books = [book for book in csv_reader if book]
+
+#     return books
+
+# def generator(books, number=20):
+#     refer = []
+#     select = random.sample(books, min(number, len(books)))
+
+#     for book in select:
+#         if len(book) > 6:
+#             author = book[2]
+#             title = book[1]
+#             year = book[5]
+#             refer.append(f"{author}.{title} - {year}")
+
+#     return refer
+
+# def save(refer, output_file1):
+#     with open(output_file1, 'w', encoding='utf-8') as file:
+#         for i, reference in enumerate(refer, start=1):
+#             file.write(f'{i}. {reference}\n')
+
+
+# filename = 'books-en.csv'   
+# books = load_books(filename)
+
+# references = generator(books)
+
+# output_filename = 'result.txt'
+# save(references, output_filename)
+
+# print(f'Ссылки находятся в файле {output_filename}')
+
+
+# Задание 4
+
