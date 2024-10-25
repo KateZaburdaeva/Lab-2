@@ -42,54 +42,106 @@
 
 
 
-# Задание 3
+# # Задание 3
 
-import csv
-import random
+# import csv
+# import random
 
-with open('books-en.csv', 'r', encoding='windows-1251') as file:
-    reader = csv.reader(file, delimiter=';')
-    table = list(reader)
+# with open('books-en.csv', 'r', encoding='windows-1251') as file:
+#     reader = csv.reader(file, delimiter=';')
+#     table = list(reader)
 
-count = len(table)
+# count = len(table)
 
-random_indices = sorted(random.sample(range(count), 20))
+# random_indices = sorted(random.sample(range(count), 20))
 
-with open('result.txt', 'w', encoding='utf-8') as output:
-    for i in random_indices:
-        row = table[i]
-        output.write(f'{row[2]}. {row[1]} - {row[3]}\n')
-
-
+# with open('result.txt', 'w', encoding='utf-8') as output:
+#     for i in random_indices:
+#         row = table[i]
+#         output.write(f'{row[2]}. {row[1]} - {row[3]}\n')
 
 
-# Задание 4
 
 
-import xml.dom.minidom as minidom
 
 
-xml_file = open('currency.xml', 'r', encoding='latin-1')
-xml_data = xml_file.read()
+# # Задание 4
 
-dom = minidom.parseString(xml_data)
-dom.normalize()
+# import xml.dom.minidom as minidom
 
-elements = dom.getElementsByTagName('Valute')
-books_dict = {}
+# xml_file = open('currency.xml', 'r', encoding='latin-1')
+# xml_data = xml_file.read()
 
-for node in elements:
-    for child in node.childNodes:
-        if child.nodeType == 1:
-            if child.tagName == 'Name':
-                if child.firstChild.nodeType == 3:
-                    name = child.firstChild.data
-            if child.tagName == 'Value':
-                if child.firstChild.nodeType == 3:
-                    value = str(child.firstChild.data)
-    books_dict[name] = value
+# dom = minidom.parseString(xml_data)
+# dom.normalize()
 
-print(books_dict)
+# elements = dom.getElementsByTagName('Valute')
+# books_dict = {}
+
+# for node in elements:
+#     for child in node.childNodes:
+#         if child.nodeType == 1:
+#             if child.tagName == 'Name':
+#                 if child.firstChild.nodeType == 3:
+#                     name = child.firstChild.data
+#             if child.tagName == 'Value':
+#                 if child.firstChild.nodeType == 3:
+#                     value = str(child.firstChild.data)
+#     books_dict[name] = value
+
+# print(books_dict)
 
 
-xml_file.close()
+# xml_file.close()
+
+
+
+
+
+
+# # Дополнительное задание 1
+
+# from csv import DictReader
+
+# unique = set()
+
+# with open('books-en.csv', 'r', encoding='latin-1') as file:
+#     reader = DictReader(file, delimiter=';')
+    
+#     for row in reader:
+#         publisher = row.get('Publisher')
+#         if publisher:
+#             unique.add(publisher)
+
+# for publisher in unique:
+#     print(publisher)
+
+
+
+
+
+
+# # Допоплнительное задание 2
+
+# from csv import DictReader
+# import os
+
+# books = {}
+
+# with open('books-en.csv', 'r', encoding='latin-1') as file:
+#     reader = DictReader(file, delimiter=';')
+    
+#     for row in reader:
+#         title = row.get('Book-Title')
+#         downloads = row.get('Downloads')
+
+#         if title and downloads and downloads.isdigit():
+#             downloads = int(downloads)
+#             books[title] = downloads
+
+# top = sorted(books.items(), key=lambda x: x[1], reverse=True)[:20]
+
+# print("20 самых популярных книг:")
+# for title, downloads in top:
+#     print(f"{title}: {downloads} скачиваний")
+
