@@ -3,7 +3,6 @@ import csv
 import random
 import xml.dom.minidom as minidom
 from csv import DictReader
-from csv import DictReader
 import os
 
 # Задание 1
